@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JavaJson:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/JavaJson_jar</output-path>
+    <root id="archive" name="JavaJson.jar">
+      <element id="module-output" name="JavaJson" />
+    </root>
+  </artifact>
+</component>
