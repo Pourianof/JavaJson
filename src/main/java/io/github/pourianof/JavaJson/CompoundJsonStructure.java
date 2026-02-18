@@ -7,6 +7,8 @@ package io.github.pourianof.JavaJson;
  * @param <T>
  */
 public abstract class CompoundJsonStructure<T> extends JsonObject<T> {
+    final static char COMPOUD_STRUCTURE_ITEMS_SEPERATOR = ',';
+
     protected abstract JsonExtractPair lookForStructure(String str, int startIndex ) throws MalformedJsonStructure, MalformedJsonValue;
     protected abstract String getTypeName();
     protected abstract char getStructureCloseChar();
@@ -30,7 +32,7 @@ public abstract class CompoundJsonStructure<T> extends JsonObject<T> {
 
             try {
                 int charIndex = Utils.indexOfClosestNonSpaceCharacter(str, endOfExtractedStructure);
-                if(str.charAt(charIndex) == ','){
+                if(str.charAt(charIndex) == COMPOUD_STRUCTURE_ITEMS_SEPERATOR){
                     startIndex = charIndex + 1;
                     continue;
 
