@@ -77,7 +77,7 @@ public class JsonNumberTest {
     void testParseSimpleInteger() throws MalformedJsonValue, MalformedJsonStructure {
         JsonObject result = JsonObject.parse("42");
         assertInstanceOf(JsonNumber.class, result);
-        assertEquals(42.0, ((JsonNumber) result).getValue());
+        assertEquals(42, ((JsonNumber) result).getValue());
     }
 
     @Test

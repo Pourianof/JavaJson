@@ -16,7 +16,18 @@ public class JsonNumber extends JsonObject<Number>{
     @Override
     protected JsonExtractPair extractJson(String str, int startIndex) {
         String number = Utils.extractFirstNumber(str, startIndex);
-        JsonNumber jo = new JsonNumber(Double.parseDouble(number));
+        
+        JsonNumber jo;
+        if(number.contains(".")){
+            jo = new JsonNumber(
+              Double.parseDouble(number)  
+            );
+        }else{
+            jo = new JsonNumber(
+                Integer.parseInt(number)
+            );
+        }
+
         return new JsonExtractPair(jo, startIndex + number.length());
     }
 
