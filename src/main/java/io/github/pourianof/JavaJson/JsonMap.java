@@ -37,6 +37,10 @@ public class JsonMap extends CompoundJsonStructure<ListMap<String,JsonObject>> {
     @Override
     protected JsonExtractPair lookForStructure(String str, int startIndex) throws MalformedJsonStructure, MalformedJsonValue {
         int keyFirstDoubleQuote = Utils.indexOfCharAfterSpaces(str, '\"', startIndex);
+        if(keyFirstDoubleQuote <= 0){
+            // no key founded
+            return new JsonExtractPair(null, startIndex);
+        }
         String key = Utils.extractFirstJsonString(str, keyFirstDoubleQuote);
         int colonIndex = Utils.indexOfCharAfterSpaces(str, ':', keyFirstDoubleQuote + key.length() + 2);
         // Illegal structure occurred, couldn't find colon before end of string or new structure
