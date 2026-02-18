@@ -1,6 +1,5 @@
 package io.github.pourianof.JavaJson;
 
-import io.github.pourianof.ListMap.ListMap;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.DisplayName;
 
@@ -21,6 +20,7 @@ public class JsonMapTest {
     @Test
     @DisplayName("Create JsonMap with entries")
     void testCreateJsonMapWithEntries() {
+        @SuppressWarnings("unchecked")
         Map.Entry<String, JsonObject>[] entries = new Map.Entry[] {
             Map.entry("name", new JsonString("John")),
             Map.entry("age", new JsonNumber(30))
