@@ -114,7 +114,7 @@ public class JsonMapTest {
         JsonMap jsonMap = (JsonMap) result;
         assertEquals(3, jsonMap.getValue().size());
         assertEquals("John", ((JsonString) jsonMap.getValue().get("name")).getValue());
-        assertEquals(30.0, ((JsonNumber) jsonMap.getValue().get("age")).getValue());
+        assertEquals(30, ((JsonNumber) jsonMap.getValue().get("age")).getValue());
         assertTrue(((JsonBoolean) jsonMap.getValue().get("active")).getValue());
     }
 
@@ -131,7 +131,7 @@ public class JsonMapTest {
     void testParseObjectWithNumberValue() throws MalformedJsonValue, MalformedJsonStructure {
         JsonObject result = JsonObject.parse("{\"count\": 42}");
         JsonMap jsonMap = (JsonMap) result;
-        assertEquals(42.0, ((JsonNumber) jsonMap.getValue().get("count")).getValue());
+        assertEquals(42, ((JsonNumber) jsonMap.getValue().get("count")).getValue());
     }
 
     @Test
