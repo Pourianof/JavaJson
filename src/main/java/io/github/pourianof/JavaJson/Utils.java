@@ -5,16 +5,16 @@ import java.util.regex.Pattern;
 
 public class Utils {
     public static boolean isSpaceChar(char c){
-        return Character.isSpaceChar(c) || c == '\t';
+        return Character.isSpaceChar(c) || c == '\t' || c == '\n';
     }
 
     /**
      * This helper function find the index of first non-space character from position startIndex.
      * This can help in parsing process.
-     * @param str
-     * @param startIndex
-     * @return
-     * @throws Exception
+     * @param str input string
+     * @param startIndex index where search should begin
+     * @return int
+     * @throws Exception When no non-space character found
      */
     public static int indexOfClosestNonSpaceCharacter(String str, int startIndex) throws Exception{
         for(int i = startIndex; i < str.length(); i++){
