@@ -1,0 +1,60 @@
+### Java / Maven / IDE ignore file
+
+# Maven
+/target/
+dependency-reduced-pom.xml
+release.properties
+
+# Compiled class files
+*.class
+
+# Log files
+*.log
+
+# Package files
+*.jar
+*.war
+*.ear
+
+# IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+out/
+
+# Eclipse
+.project
+.classpath
+.settings/
+
+# VS Code workspace/settings
+.vscode/
+
+# NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+
+# Generated sources
+/generated-sources/
+/generated-test-sources/
+/test-classes/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor swap / temp files
+*~
+*.swp
+
+# Misc
+logs/
+*.log
+.git/
+target/
+out/
