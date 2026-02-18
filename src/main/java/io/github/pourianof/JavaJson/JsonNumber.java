@@ -16,7 +16,7 @@ public class JsonNumber extends JsonObject<Number>{
     @Override
     protected JsonExtractPair extractJson(String str, int startIndex) {
         String number = Utils.extractFirstNumber(str, startIndex);
-        
+
         JsonNumber jo;
         if(number.contains(".")){
             jo = new JsonNumber(
@@ -24,7 +24,7 @@ public class JsonNumber extends JsonObject<Number>{
             );
         }else{
             jo = new JsonNumber(
-                Integer.parseInt(number)
+                NumberUtils.parseInteger(number)
             );
         }
 
