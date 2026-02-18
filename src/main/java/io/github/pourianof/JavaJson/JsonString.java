@@ -1,5 +1,7 @@
 package io.github.pourianof.JavaJson;
 
+import io.github.pourianof.Utils.StringUtils;
+
 /**
  * Represent a JSON string value
  */
@@ -21,7 +23,7 @@ public class JsonString extends JsonObject<String>{
     @Override
     protected JsonExtractPair extractJson(String str, int startIndex){
         String extracted = Utils.extractFirstJsonString(str, startIndex);
-        String unescapedString = extracted.translateEscapes();
+        String unescapedString = StringUtils.decodeAllEscapes(extracted);
         JsonString jo = new JsonString(unescapedString);
         return new JsonExtractPair(jo, startIndex + extracted.length() + 2);
     }

@@ -125,9 +125,11 @@ public class JsonObjectIntegrationTest {
     void testTypeNamesForCompoundStructures() {
         JsonArray array = new JsonArray();
         assertEquals("array", JsonArray.typeName);
+        assertEquals("array", array.getTypeName());
         
         JsonMap map = new JsonMap();
         assertEquals("map", JsonMap.typeName);
+        assertEquals("map", map.getTypeName());
     }
 
     @Test
