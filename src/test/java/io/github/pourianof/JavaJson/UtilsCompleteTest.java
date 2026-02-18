@@ -85,19 +85,11 @@ public class UtilsCompleteTest {
     }
 
     @Test
-    @DisplayName("indexOfCharAfterSpaces finds character immediately")
+    @DisplayName("indexOfCharAfterSpaces finds first character after start-padding spaces if any")
     void testIndexOfCharAfterSpacesImmediate() {
-        String str = "Hello,World";
+        String str = "     ,Hello,World";
         int index = Utils.indexOfCharAfterSpaces(str, ',', 0);
         assertEquals(5, index);
-    }
-
-    @Test
-    @DisplayName("indexOfCharAfterSpaces skips spaces before character")
-    void testIndexOfCharAfterSpacesSkipsSpaces() {
-        String str = "Hello  ,  World";
-        int index = Utils.indexOfCharAfterSpaces(str, ',', 0);
-        assertEquals(7, index);
     }
 
     @Test
@@ -111,9 +103,9 @@ public class UtilsCompleteTest {
     @Test
     @DisplayName("indexOfCharAfterSpaces from specific start index")
     void testIndexOfCharAfterSpacesFromStartIndex() {
-        String str = "One,Two,Three";
-        int index = Utils.indexOfCharAfterSpaces(str, ',', 4);
-        assertEquals(7, index);
+        String str = "One  ,Two,Three";
+        int index = Utils.indexOfCharAfterSpaces(str, ',', 3);
+        assertEquals(5, index);
     }
 
     @Test
