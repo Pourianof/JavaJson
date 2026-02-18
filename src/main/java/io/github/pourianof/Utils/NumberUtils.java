@@ -1,4 +1,4 @@
-package io.github.pourianof.JavaJson;
+package io.github.pourianof.Utils;
 
 import java.math.BigInteger;
 

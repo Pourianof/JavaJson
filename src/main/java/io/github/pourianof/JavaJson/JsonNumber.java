@@ -1,5 +1,7 @@
 package io.github.pourianof.JavaJson;
 
+import io.github.pourianof.Utils.NumberUtils;
+
 /**
  * Represent a JSON number value
  */
