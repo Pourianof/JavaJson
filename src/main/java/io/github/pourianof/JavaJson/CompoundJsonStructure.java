@@ -66,6 +66,6 @@ public abstract class CompoundJsonStructure<T> extends JsonObject<T> {
         if(itemsCount > 0) {
             tempString.append(this.provideJsonItem(itemsCount -1));
         }
-        return this.getStructureOpenChar() +" " + tempString + " " + this.getStructureCloseChar();
+        return "" + this.getStructureOpenChar() + tempString + this.getStructureCloseChar();
     }
 }
