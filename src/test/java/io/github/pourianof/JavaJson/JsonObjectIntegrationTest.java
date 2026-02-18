@@ -27,7 +27,7 @@ public class JsonObjectIntegrationTest {
         assertInstanceOf(JsonMap.class, result);
         
         JsonMap jsonMap = (JsonMap) result;
-        assertEquals(5, jsonMap.getValue().size());
+        assertEquals(6, jsonMap.getValue().size());
     }
 
     @Test

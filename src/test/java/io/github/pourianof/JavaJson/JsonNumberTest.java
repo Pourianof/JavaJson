@@ -133,7 +133,7 @@ public class JsonNumberTest {
     void testParseSmallDecimal() throws MalformedJsonValue, MalformedJsonStructure {
         JsonObject result = JsonObject.parse("0.0001");
         assertInstanceOf(JsonNumber.class, result);
-        assertEquals( ((JsonNumber) result).getValue(), 0.00001);
+        assertEquals( ((JsonNumber) result).getValue(), 0.0001);
     }
 
     @Test
