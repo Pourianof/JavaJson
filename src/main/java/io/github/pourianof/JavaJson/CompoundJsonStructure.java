@@ -16,17 +16,26 @@ public abstract class CompoundJsonStructure<T> extends JsonObject<T> {
     @Override
     protected JsonExtractPair extractJson(String str, int startIndex) throws MalformedJsonValue, MalformedJsonStructure {
         startIndex = startIndex + 1; // startIndex initially point to beginning (like { or [) character
-        String substring = str.substring(str.length() - 8);
+        String substring = str.substring(0, startIndex);
         while (startIndex < str.length()) {
-            JsonExtractPair pair = this.lookForStructure(str, startIndex);
+            JsonExtractPair pair = null;
+            try{
+                pair = this.lookForStructure(str, startIndex);
+            }catch(MalformedJsonValue ex){
+                // candidate for end of structure (empty structure)
+            }
+            
+            // if extraction of pair failed, then use the startIndex for seek what is next character
+            var endOfExtractedStructure = pair == null ? startIndex : pair.endIndexOfExtractedInMainJson();
+
             try {
-                int charIndex = Utils.indexOfClosestNonSpaceCharacter(str, pair.endIndexOfExtractedInMainJson());
+                int charIndex = Utils.indexOfClosestNonSpaceCharacter(str, endOfExtractedStructure);
                 if(str.charAt(charIndex) == ','){
                     startIndex = charIndex + 1;
                     continue;
 
                 } else if (str.charAt(charIndex) == getStructureCloseChar()) {
-                    int closeBracketIndex = Utils.indexOfCharAfterSpaces(str, getStructureCloseChar(), pair.endIndexOfExtractedInMainJson());
+                    int closeBracketIndex = Utils.indexOfCharAfterSpaces(str, getStructureCloseChar(), endOfExtractedStructure);
                     return new JsonExtractPair(this, closeBracketIndex + 1);
                 }else{
                     throw new MalformedJsonStructure(this.getTypeName(),
@@ -41,7 +50,7 @@ public abstract class CompoundJsonStructure<T> extends JsonObject<T> {
                         "Json string got finished without completing current " + this.getTypeName() +
                                 " structure.",
                         substring,
-                        pair.endIndexOfExtractedInMainJson());
+                        endOfExtractedStructure);
             }
         }
         throw new MalformedJsonStructure(this.getTypeName(),
