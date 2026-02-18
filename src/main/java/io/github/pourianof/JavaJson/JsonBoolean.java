@@ -4,6 +4,9 @@ package io.github.pourianof.JavaJson;
  * Represent a JSON boolean value
  */
 public class JsonBoolean extends JsonObject<Boolean>{
+    final static String TRUE_STRING = "true";
+    final static String FALSE_STRING = "false";
+
     Boolean bool;
     public JsonBoolean(Boolean bool){
         this.bool = bool;
@@ -17,10 +20,12 @@ public class JsonBoolean extends JsonObject<Boolean>{
     @Override
     protected JsonExtractPair extractJson(String str, int startIndex)  {
         char firstChar = Character.toLowerCase(str.charAt(startIndex));
+        String normalizedStr = str.toLowerCase();
+
         boolean bool;
-        if( firstChar == 't' &&  str.startsWith("true", startIndex)){
+        if( firstChar == 't' &&  normalizedStr.startsWith(TRUE_STRING, startIndex)){
             bool = true;
-        }else if( firstChar == 'f' && str.startsWith("false", startIndex)){
+        }else if( firstChar == 'f' && normalizedStr.startsWith(FALSE_STRING, startIndex)){
             bool = false;
         } else{
             bool = false;
