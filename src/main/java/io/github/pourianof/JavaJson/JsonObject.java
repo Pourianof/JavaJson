@@ -84,7 +84,7 @@ public abstract class JsonObject<T> {
                 return JsonArray.extract(str,indexOfChar);
             }
             default: {
-                if (Character.isDigit(c)) { // number
+                if (Character.isDigit(c) || c == '-' || c == '+') { // number
                     return JsonNumber.extract(str, indexOfChar);
                 } else if (Character.toLowerCase(c) == 't' || Character.toLowerCase(c) == 'f') { // boolean
                     return JsonBoolean.extract(str, indexOfChar);
