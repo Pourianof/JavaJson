@@ -93,7 +93,7 @@ public class JsonNumberTest {
     void testParseNegativeInteger() throws MalformedJsonValue, MalformedJsonStructure {
         JsonObject result = JsonObject.parse("-100");
         assertInstanceOf(JsonNumber.class, result);
-        assertEquals(-100.0, ((JsonNumber) result).getValue());
+        assertEquals(-100, ((JsonNumber) result).getValue());
     }
 
     @Test
@@ -109,7 +109,7 @@ public class JsonNumberTest {
     void testParseZero() throws MalformedJsonValue, MalformedJsonStructure {
         JsonObject result = JsonObject.parse("0");
         assertInstanceOf(JsonNumber.class, result);
-        assertEquals(0.0, ((JsonNumber) result).getValue());
+        assertEquals(0, ((JsonNumber) result).getValue());
     }
 
     @Test
@@ -117,7 +117,7 @@ public class JsonNumberTest {
     void testParseNumberWithSpaces() throws MalformedJsonValue, MalformedJsonStructure {
         JsonObject result = JsonObject.parse("  42  ");
         assertInstanceOf(JsonNumber.class, result);
-        assertEquals(42.0, ((JsonNumber) result).getValue());
+        assertEquals(42, ((JsonNumber) result).getValue());
     }
 
     @Test
@@ -125,7 +125,7 @@ public class JsonNumberTest {
     void testParseLargeNumber() throws MalformedJsonValue, MalformedJsonStructure {
         JsonObject result = JsonObject.parse("999999999999");
         assertInstanceOf(JsonNumber.class, result);
-        assertEquals(999999999999.0, ((JsonNumber) result).getValue());
+        assertEquals(999999999999l, ((JsonNumber) result).getValue());
     }
 
     @Test
