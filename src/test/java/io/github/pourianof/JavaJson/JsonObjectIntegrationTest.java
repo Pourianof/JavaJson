@@ -207,8 +207,8 @@ public class JsonObjectIntegrationTest {
         JsonArray array = (JsonArray) result;
         
         assertEquals(5, array.getValue().size());
-        assertEquals(0.0, ((JsonNumber) array.getValue().get(0)).getValue());
-        assertEquals(-1.0, ((JsonNumber) array.getValue().get(1)).getValue());
+        assertEquals(0, ((JsonNumber) array.getValue().get(0)).getValue());
+        assertEquals(-1, ((JsonNumber) array.getValue().get(1)).getValue());
         assertEquals(3.14, ((JsonNumber) array.getValue().get(2)).getValue());
     }
 
