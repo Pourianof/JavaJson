@@ -52,7 +52,7 @@ public class JsonMapTest {
     @DisplayName("Serialize empty map to JSON")
     void testToJsonEmptyMap() {
         JsonMap jsonMap = new JsonMap();
-        assertEquals("{ }", jsonMap.toJson());
+        assertEquals("{}", jsonMap.toJson());
     }
 
     @Test
