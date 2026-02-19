@@ -8,11 +8,44 @@
     <artifactId>JavaJson</artifactId>
     <version>0.1.0</version>
     <packaging>jar</packaging>
+    <name>JavaJson</name>
+    <description>Lightweight JSON parser and serializer in pure Java.</description>
+    <url>https://github.com/pourianof/JavaJson</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>https://opensource.org/licenses/MIT</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>pourianof</id>
+            <name>Pooria Amini</name>
+            <email>PouriyaXAmini@gmail.com</email>
+        </developer>
+    </developers>
+
+    <scm>
+        <connection>scm:git:git://github.com/pourianof/JavaJson.git</connection>
+        <developerConnection>scm:git:ssh://github.com/pourianof/JavaJson.git</developerConnection>
+        <url>https://github.com/pourianof/JavaJson</url>
+    </scm>
+
+    <!-- DistributionManagement: configure OSSRH for Maven Central staging. Replace credentials in your ~/.m2/settings.xml -->
     <distributionManagement>
         <repository>
-            <id>JavaJson</id>
-            <url>https://github.com/pourianof/JavaJson</url>
+            <id>ossrh</id>
+            <name>OSSRH Staging</name>
+            <url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
         </repository>
+        <snapshotRepository>
+            <id>ossrh-snapshots</id>
+            <name>OSSRH Snapshots</name>
+            <url>https://s01.oss.sonatype.org/content/repositories/snapshots/</url>
+        </snapshotRepository>
     </distributionManagement>
     <dependencies>
         <dependency>
@@ -48,6 +81,50 @@
                         <descriptorRef>jar-with-dependencies</descriptorRef>
                     </descriptorRefs>
                 </configuration>
+            </plugin>
+            <!-- Attach source and javadoc jars for Central requirements -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>4.1.0</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>3.5.1</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <!-- Signing plugin: signing configured via ~/.gnupg and ~/.m2/settings.xml (server credentials) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-gpg-plugin</artifactId>
+                <version>3.2.0</version>
+                <executions>
+                    <execution>
+                        <id>sign-artifacts</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>sign</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
